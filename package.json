@@ -8,18 +8,22 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/http-status-codes": "^1.2.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.4",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "http-status-codes": "^2.3.0"
+    "http-status-codes": "^2.3.0",
+    "morgan": "^1.10.0"
   },
   "scripts": {
     "clean": "rm -rf build",
     "build": "yarn clean && tsc",
-    "dev": "ts-node src/index.ts"
+    "start": "node build/index.js",
+    "dev": "ts-node-dev --respawn src/index.ts"
   }
 }
