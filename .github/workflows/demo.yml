@@ -34,5 +34,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/.demo
-            yarn install
+            npm install --production
             pm2 restart demo
