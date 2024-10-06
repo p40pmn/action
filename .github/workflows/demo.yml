@@ -33,5 +33,6 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            cd ~/.demo
             yarn install
             pm2 restart demo
