@@ -33,5 +33,5 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            npm install --production
+            yarn install
             pm2 restart demo
