@@ -24,7 +24,7 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "build/*,package.json,package-lock.json"
-          target: "~/"
+          target: "~/.demo/"
       
       - name: Restart Server
         uses: appleboy/ssh-action@v0.1.7
