@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
-const port =  process.env.PORT || 8089;
+const port =  process.env.PORT || 8989;
 
 app.get("/", (req, res) => {
   res.status(httpStatus.OK).json({

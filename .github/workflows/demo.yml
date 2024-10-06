@@ -13,11 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: yarn install
-
       - name: Build
-        run: yarn build
+        run: |
+          yarn install && yarn build
 
       - name: Deploy
         uses: appleboy/scp-action@v0.1.7
@@ -27,3 +25,12 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "build/*"
           target: "~/"
+      
+      - name: Restart Server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            pm2 restart demo
