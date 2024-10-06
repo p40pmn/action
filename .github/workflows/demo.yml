@@ -12,10 +12,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
       - name: Deploy
-        run: |
-          echo "Deploying to production"
-          # Your deployment script here
+        run: scp -r ./build/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/
+
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
