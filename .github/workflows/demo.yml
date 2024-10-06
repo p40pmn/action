@@ -19,18 +19,11 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Add Host Key to Known Hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
       - name: Deploy
-        run: scp -r ./build/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/
-
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: echo "Hello, From appleboy/ssh-action@v1.0.3!" > artifact.txt
+          source: "build/*"
+          target: "~/"
