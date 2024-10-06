@@ -33,4 +33,4 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ~/.demo && npm install --production && pm2 restart demo
+            cd ~/.demo && npm install --omit=dev && pm2 restart demo
