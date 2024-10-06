@@ -23,7 +23,7 @@ jobs:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "build/* package.json package-lock.json"
+          source: "build/*,package.json,package-lock.json"
           target: "~/"
       
       - name: Restart Server
