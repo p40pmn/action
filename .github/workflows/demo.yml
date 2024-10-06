@@ -23,7 +23,7 @@ jobs:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "build/*"
+          source: "build/* package.json package-lock.json"
           target: "~/"
       
       - name: Restart Server
@@ -33,4 +33,5 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            npm install --production
             pm2 restart demo
